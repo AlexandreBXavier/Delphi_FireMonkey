@@ -13,7 +13,8 @@ uses
      FMX.Grid.Style, Data.Bind.EngExt, FMX.Bind.DBEngExt, FMX.Bind.Grid,
      System.Bindings.Outputs, FMX.Bind.Editors, Data.Bind.Components,
      Data.Bind.Grid, FMX.Controls.Presentation, FMX.ScrollBox, FMX.Grid,
-     Data.Bind.DBScope, FMX.Layouts, FMX.Bind.Navigator, FireDAC.Comp.DataSet;
+     Data.Bind.DBScope, FMX.Layouts, FMX.Bind.Navigator, FireDAC.Comp.DataSet,
+  FMX.StdCtrls, FMX.TabControl;
 
 type
      TfrmMain = class(TForm)
@@ -23,13 +24,20 @@ type
           FDQueryContactsnameContact: TStringField;
           FDQueryContactscellPhone: TStringField;
           FDQueryContactsdateBirth: TSQLTimeStampField;
-          BindNavigator1: TBindNavigator;
           BindSourceDB1: TBindSourceDB;
-          Grid1: TGrid;
           BindingsList1: TBindingsList;
-          LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+          Panel1: TPanel;
+          TabControl1: TTabControl;
+          TabItem1: TTabItem;
+          Grid1: TGrid;
+          BindNavigator1: TBindNavigator;
+          TabItem2: TTabItem;
+    btnConnect: TButton;
+    LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource;
+    StyleBook: TStyleBook;
           procedure FormShow(Sender: TObject);
           procedure FormClose(Sender: TObject; var Action: TCloseAction);
+          procedure btnConnectClick(Sender: TObject);
      private
           { Private declarations }
      public
@@ -43,15 +51,30 @@ implementation
 
 {$R *.fmx}
 
+procedure TfrmMain.btnConnectClick(Sender: TObject);
+begin
+     if FDQueryContacts.Active then
+     begin
+          FDQueryContacts.Close;
+          //
+          btnConnect.Text := 'Open';
+     end
+     else
+     begin
+          FDQueryContacts.Open;
+          //
+          btnConnect.Text := 'Close';
+     end;
+end;
+
 procedure TfrmMain.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-     FDQueryContacts.Close;
+     FDConnection.Close;
 end;
 
 procedure TfrmMain.FormShow(Sender: TObject);
 begin
-     FDQueryContacts.Close;
-     FDQueryContacts.Open;
+     FDConnection.Open();
 end;
 
 end.

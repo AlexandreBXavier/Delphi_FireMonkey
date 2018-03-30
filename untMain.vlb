@@ -1,36 +1,51 @@
 ﻿[FDConnection]
-Coordinates=0,0,84,33
+Coordinates=0,0,97,36
 
 [FDQueryContactsidContact]
-Coordinates=252,78,149,33
+Coordinates=252,78,172,36
 
 [FDQueryContacts]
-Coordinates=10,10,101,33
+Coordinates=10,10,117,36
 Visible=False
 
 [FDQueryContactsnameContact]
-Coordinates=252,133,167,33
-
-[BindNavigator1]
-Coordinates=137,10,90,51
-Visible=True
+Coordinates=252,133,193,36
 
 [FDQueryContactscellPhone]
-Coordinates=73,166,150,33
+Coordinates=73,166,174,36
 
 [FDQueryContactsdateBirth]
-Coordinates=483,1,147,33
+Coordinates=483,1,169,36
 
 []
-Coordinates=135,164,91,36
-
-[BindSourceDB1]
-Coordinates=10,10,92,141
-
-[Grid1]
-Coordinates=250,90,53,123
+Coordinates=282,87,220,36
 Visible=True
 
+[BindSourceDB1]
+Coordinates=10,10,106,168
+
 [BindingsList1]
-Coordinates=135,87,82,33
+Coordinates=135,87,91,36
+
+[btnConnect]
+Coordinates=420,10,80,58
+
+[Panel1]
+Coordinates=14,197,55,36
+
+[TabControl1]
+Coordinates=285,265,85,36
+
+[TabItem2]
+Coordinates=206,271,69,36
+
+[TabItem1]
+Coordinates=127,271,69,36
+
+[Grid1]
+Coordinates=200,10,63,146
+Visible=True
+
+[StyleBook]
+Coordinates=135,175,72,36
 
