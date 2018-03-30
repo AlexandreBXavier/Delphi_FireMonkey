@@ -1,20 +1,114 @@
 object frmMain: TfrmMain
   Left = 0
   Top = 0
-  Caption = 'Form1'
+  BorderIcons = [biSystemMenu]
+  BorderStyle = Single
+  Caption = 'Samples 03 - Using FireMonkey'
   ClientHeight = 480
-  ClientWidth = 640
+  ClientWidth = 648
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
+  OnClose = FormClose
+  OnShow = FormShow
   DesignerMasterStyle = 0
+  object BindNavigator1: TBindNavigator
+    Align = Top
+    Size.Width = 648.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    DataSource = BindSourceDB1
+    xRadius = 4.000000000000000000
+    yRadius = 4.000000000000000000
+  end
+  object Grid1: TGrid
+    Align = Client
+    CanFocus = True
+    ClipChildren = True
+    Size.Width = 648.000000000000000000
+    Size.Height = 455.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Viewport.Width = 628.000000000000000000
+    Viewport.Height = 430.000000000000000000
+  end
   object FDConnection: TFDConnection
     Params.Strings = (
       'Server=ZOEBOOK07\SQLEXPRESS'
       'Database=Samples'
       'OSAuthent=Yes'
       'DriverID=MSSQL')
-    Left = 40
+    Connected = True
+    LoginPrompt = False
+    Left = 8
+    Top = 32
+  end
+  object FDQueryContacts: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'SELECT * FROM Contacts')
+    Left = 32
+    Top = 81
+    object FDQueryContactsidContact: TFDAutoIncField
+      FieldName = 'idContact'
+      Origin = 'idContact'
+      ReadOnly = True
+    end
+    object FDQueryContactsnameContact: TStringField
+      FieldName = 'nameContact'
+      Origin = 'nameContact'
+      Required = True
+      Size = 30
+    end
+    object FDQueryContactscellPhone: TStringField
+      FieldName = 'cellPhone'
+      Origin = 'cellPhone'
+      Required = True
+      Size = 11
+    end
+    object FDQueryContactsdateBirth: TSQLTimeStampField
+      FieldName = 'dateBirth'
+      Origin = 'dateBirth'
+      Required = True
+    end
+  end
+  object BindSourceDB1: TBindSourceDB
+    DataSet = FDQueryContacts
+    ScopeMappings = <>
+    Left = 104
     Top = 24
+  end
+  object BindingsList1: TBindingsList
+    Methods = <>
+    OutputConverters = <>
+    Left = 116
+    Top = 77
+    object LinkGridToDataSourceBindSourceDB1: TLinkGridToDataSource
+      Category = 'Quick Bindings'
+      DataSource = BindSourceDB1
+      GridControl = Grid1
+      Columns = <
+        item
+          MemberName = 'idContact'
+          Header = 'Id'
+          Width = 80
+        end
+        item
+          MemberName = 'nameContact'
+          Header = 'Name'
+          Width = 380
+        end
+        item
+          MemberName = 'cellPhone'
+          Header = 'Phone'
+          Width = 80
+        end
+        item
+          MemberName = 'dateBirth'
+          Header = 'Birth'
+          Width = 80
+        end>
+    end
   end
 end
