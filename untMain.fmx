@@ -8,4 +8,13 @@ object frmMain: TfrmMain
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop]
   DesignerMasterStyle = 0
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'Server=ZOEBOOK07\SQLEXPRESS'
+      'Database=Samples'
+      'OSAuthent=Yes'
+      'DriverID=MSSQL')
+    Left = 40
+    Top = 24
+  end
 end
